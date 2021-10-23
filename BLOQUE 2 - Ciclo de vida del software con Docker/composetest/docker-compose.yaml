@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  # Primer servicio: WEB
+  web:
+   build: .
+   ports: 
+   - 5000:5000
+   volumes:
+   - .:/code
+   environment:
+    FLASK_ENV: development
+
+  # Segundo servicio: Redis
+  redis:
+    image: "redis:alpine"
