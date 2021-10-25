@@ -6,7 +6,6 @@
 
 * Más cursos: https://jamengual150899.wixsite.com/joan-amengual
 
-
 # [Curso completo de Docker de cero a experto](https://jamengual150899.wixsite.com/joan-amengual)
 
 * ¿Quieres convertirte en un experto en la tecnología de contenedores de software?
