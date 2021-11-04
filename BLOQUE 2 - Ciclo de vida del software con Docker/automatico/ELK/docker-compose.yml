@@ -1,0 +1,37 @@
+version: '3.7'
+
+# ELK
+services:
+
+  # Elasticsearch
+  elasticsearch:
+    image: elasticsearch:7.9.2
+    ports:
+      - '9200:9200'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  # Kibana
+  kibana:
+    image: kibana:7.9.2
+    ports:
+      - '5601:5601'
+
+  # Logstash
+  logstash:
+    image: logstash:7.9.2
+    ports:
+      - '5000:5000'
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/share/logstash/pipeline
+        read_only: true
+
+
+
+
