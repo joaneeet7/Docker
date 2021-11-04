@@ -4,9 +4,9 @@
 
 * Perfil de Udemy: https://www.udemy.com/user/joan-amengual-mesquida/
 
-* Más cursos: https://jamengual150899.wixsite.com/joan-amengual
+* Más cursos: https://joan-amengual.com
 
-# [Curso completo de Docker de cero a experto](https://jamengual150899.wixsite.com/joan-amengual)
+# [Curso completo de Docker de cero a experto](https://joan-amengual.com)
 
 * ¿Quieres convertirte en un experto en la tecnología de contenedores de software?
 * ¿Quieres desplegar tus aplicaciones en un entorno de CI/CD con Docker?
