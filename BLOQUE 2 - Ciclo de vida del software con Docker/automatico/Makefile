@@ -215,5 +215,31 @@ delete_dapp: ## Eliminación del contenedor de la DAPP
 	$(MAKE) stop_dapp
 	docker rm $(DAPP_CONTAINER_NAME)
 
+# -----------------------------------
+# 4. DESPLIEGUE DE CADVISOR
+# -----------------------------------
 
+CADVISOR_IMAGE=google/cadvisor
+CADVISOR_TAG=v0.33.0
+CADVISOR_CONTAINER=cadvisor_joan
+PATH_CADVISOR_IMAGE=/Users/joan_amengual/Desktop/automatico
 
+build_cadvisor: ## Construcción y despliegue de cadvisor
+	@echo 'Descarga de la imagen de $(CADVISOR_IMAGE)'
+	docker pull $(CADVISOR_IMAGE):$(CADVISOR_TAG)
+	@echo 'Ejecución de $(CADVISOR_IMAGE)'
+	docker run -dp 8080:8080 --name $(CADVISOR_CONTAINER) $(CADVISOR_IMAGE):$(CADVISOR_TAG)
+
+save_cadvisor: ## Guarda la imagen de cAdvisor
+	@echo 'Guarda la imagen de cAdvisor'
+	docker save $(CADVISOR_IMAGE):$(CADVISOR_TAG) | gzip > $(PATH_CADVISOR_IMAGE)/cadvisor.tar.gz
+
+load_cadvisor: ## Carga de la imagen de cadvisor y ejecución
+	@echo 'Carga de la imagen'
+	docker load --input $(PATH_CADVISOR_IMAGE)/cadvisor.tar.gz
+	@echo 'Ejecución de un contenedor para cAdvisor'
+	docker run -dp 8080:8080 --name $(CADVISOR_CONTAINER) $(CADVISOR_IMAGE):$(CADVISOR_TAG)
+
+delete_cadvisor: ## Eliminación de contenedores y imagenes de cadvisor
+	docker rm -f $(CADVISOR_CONTAINER)
+	docker rmi $(CADVISOR_IMAGE):$(CADVISOR_TAG)
